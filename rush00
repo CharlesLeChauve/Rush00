@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rush00.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgibert <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/15 12:30:30 by tgibert           #+#    #+#             */
+/*   Updated: 2023/07/15 18:32:57 by tgibert          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+void	ft_putchar(char c);
+
+void	put_line(char exterieur, char interieur, int colonnes)	//Fonction pour imprimer les lignes avec les deux caracteres necessaires et la longueur des lignes
+{
+	int	i;					//declaration compteur
+
+	i = 1;						//initialisation compteur
+	while (i <= colonnes)				//Tant que i < colonnes (colonnes = x) (= pour chaque colonne de la ligne)
+	{
+		if (i == 1 || i == colonnes)		//Si c'est le premier ou dernier caractere de la ligne
+			ft_putchar(exterieur);		//imprime le caractere des extremites
+		else
+			ft_putchar(interieur);		//imprime le caractere du centre
+		i++;					//incrementation du compteur (passe au caractere suivant)
+	}
+	ft_putchar('\n');				//Retour a la ligne a la fin de la ligne
+}
+
+void	rush(int x, int y)
+{
+	int	i;					//declaration compteur
+
+	i = 1;						//initialisation compteur
+	while (i <= y)					//Tant que compteur inferieur ou egal au nombre de lignes (= pour chaque ligne)
+	{
+		if (i == 1 || i == y) 			//Si c'est la premiere OU la derniere
+			put_line('o', '-', x);		//Appel fonction put_line avec caracteres premiere et derniere lignes et longueur des lignes en arguments
+		else					//Sinon (=si ce n'est ni la 1ere ni la derniere)
+			put_line('|', ' ', x);		//Appel fonction put_line avec caracteres autres lignes 
+		i++;					//Incrementation compteur (= Passe a la prochaine ligne)
+	}
+}
